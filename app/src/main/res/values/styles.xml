@@ -1,0 +1,28 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="MaterialTheme" parent="ParentMaterialTheme">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="ParentMaterialTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Parent Theme for all apps -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!--<item name="android:colorControlHighlight">#1ef1ab</item>-->
+        <!--<item name="android:colorButtonNormal">#f955f3</item>-->
+        <!--<item name="android:colorControlActivated">#0cf427</item>-->
+    </style>
+
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+    </style>
+
+    <style name="PopupTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColorPrimary">#9e9e9e</item>
+        <item name="android:background">#fffcfff6</item>
+    </style>
+</resources>
