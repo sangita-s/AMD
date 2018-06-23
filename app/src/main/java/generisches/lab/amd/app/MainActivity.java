@@ -1,6 +1,7 @@
 package generisches.lab.amd.app;
 
 import android.os.Build;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -23,6 +24,12 @@ public class    MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setupToolBar();
+        setupDrawer();
+        setupRecyclerView();
+    }
+
+    private void setupToolBar(){
         mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
@@ -43,21 +50,7 @@ public class    MainActivity extends AppCompatActivity {
 //                return false;
 //            }
 //        });
-        setupRecyclerView();
     }
-
-    private void setupRecyclerView() {
-        RecyclerView lRecyclerView = findViewById(R.id.recyclerView);
-        RecyclerAdapter lAdapter = new RecyclerAdapter(this, Landscape.getData());
-        lRecyclerView.setAdapter(lAdapter);
-
-        LinearLayoutManager lLinearLayoutManagerVertical = new LinearLayoutManager(this);
-        lLinearLayoutManagerVertical.setOrientation(LinearLayoutManager.VERTICAL);
-        lRecyclerView.setLayoutManager(lLinearLayoutManagerVertical);
-
-        lRecyclerView.setItemAnimator(new DefaultItemAnimator());
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -91,6 +84,24 @@ public class    MainActivity extends AppCompatActivity {
         toast(msg);
 
         return super.onOptionsItemSelected(item);
+    }
+    private void setupDrawer(){
+        NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)getSupportFragmentManager().findFragmentById(R.id.nav_draw_frag);
+        DrawerLayout lDrawerLayout = findViewById(R.id.drawer_layout);
+        drawerFragment.setupDrawer(R.id.nav_draw_frag, lDrawerLayout, mToolbar);
+    }
+
+
+    private void setupRecyclerView() {
+        RecyclerView lRecyclerView = findViewById(R.id.recyclerView);
+        RecyclerAdapter lAdapter = new RecyclerAdapter(this, Landscape.getData());
+        lRecyclerView.setAdapter(lAdapter);
+
+        LinearLayoutManager lLinearLayoutManagerVertical = new LinearLayoutManager(this);
+        lLinearLayoutManagerVertical.setOrientation(LinearLayoutManager.VERTICAL);
+        lRecyclerView.setLayoutManager(lLinearLayoutManagerVertical);
+
+        lRecyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
     private void toast(String msg) {
